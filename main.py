@@ -126,5 +126,5 @@ with explanation_col:
 with graph_col:
     st.subheader("波の重ね合わせのグラフ")
     st.warning("アニメーションなので描画に時間がかかります。")
-    components.html(ani.to_jshtml(),height=1000)
+    components.html(ani.to_jshtml(),height=700)
 

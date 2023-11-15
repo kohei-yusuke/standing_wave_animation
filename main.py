@@ -88,43 +88,42 @@ def animate(t):
 
   return line1, line2, line3
 
-ani = animation.FuncAnimation(fig, animate, frames=200, interval=150, blit =True)
+ani = animation.FuncAnimation(fig, animate, frames=100, interval=150, blit =True)
 
 
-explanation_col,graph_col = st.columns(2)
-with explanation_col:
-    is_standing_wave = True
 
-    if A1 == A2:
-        is_A_same = True
-    else:
-        is_A_same = False
-    
-    
-    is_same_dict = {"A":is_A_same}
-    st.markdown("""
-    ## 定常波 とは
-    ### 振幅A,周期T,波長λ,速さvが同じ かつ
-    ### 向きが互いに逆向き の2つの波が作る合成波
-    逆向きの2つの波は
-    """)
-    st.latex(r'''
-    y_1 = A_1 \sin \left\{2\pi \left(\frac{t}{T_1}-\frac{x}{\lambda_1} \right) (+ \delta_1)\right\}\quad(\delta_1\text{は初期位相})
-    ''')
-    st.latex(r'''
-    y_2 = A_2 \sin \left\{2\pi \left(\frac{t}{T_2}+\frac{x}{\lambda_2} \right) (+ \delta_2)\right\}\quad(\delta_2\text{は初期位相})
-    ''')
-    st.write("と表せる。(sinの中の符号に注意) 定常波が存在するとき")
-    st.latex(r''' 
-    A_1 = A_2,T_1 = T_2, \lambda_1 = \lambda_2
-    ''')
-    st.write("である。\
-             このような状況は自然に起こりにくいが壁による反射は振幅などの波のパラメータを変えないので定常波が発生する。\
-             自由端反射、固定端反射、気柱はその最たる例である。\
-             グラフはx-yグラフ、つまりtを動かしている。")
-    st.write("定常波が発生するのは上のような状況のみであることをパラメータを変えて見てみることで観察せよ。")
-with graph_col:
-    st.subheader("波の重ね合わせのグラフ")
-    st.warning("アニメーションなので描画に時間がかかります。")
-    components.html(ani.to_jshtml(),height=700)
+st.subheader("波の重ね合わせのグラフ")
+st.warning("アニメーションなので描画に時間がかかります。")
+components.html(ani.to_jshtml(),height=700)
+
+is_standing_wave = True
+
+if A1 == A2:
+    is_A_same = True
+else:
+    is_A_same = False
+
+
+is_same_dict = {"A":is_A_same}
+st.markdown("""
+## 定常波 とは
+### 振幅A,周期T,波長λ,速さvが同じ かつ
+### 向きが互いに逆向き の2つの波が作る合成波
+逆向きの2つの波は
+""")
+st.latex(r'''
+y_1 = A_1 \sin \left\{2\pi \left(\frac{t}{T_1}-\frac{x}{\lambda_1} \right) (+ \delta_1)\right\}\quad(\delta_1\text{は初期位相})
+''')
+st.latex(r'''
+y_2 = A_2 \sin \left\{2\pi \left(\frac{t}{T_2}+\frac{x}{\lambda_2} \right) (+ \delta_2)\right\}\quad(\delta_2\text{は初期位相})
+''')
+st.write("と表せる。(sinの中の符号に注意) 定常波が存在するとき")
+st.latex(r''' 
+A_1 = A_2,T_1 = T_2, \lambda_1 = \lambda_2
+''')
+st.write("である。\
+            このような状況は自然に起こりにくいが壁による反射は振幅などの波のパラメータを変えないので定常波が発生する。\
+            自由端反射、固定端反射、気柱はその最たる例である。\
+            グラフはx-yグラフ、つまりtを動かしている。")
+st.write("定常波が発生するのは上のような状況のみであることをパラメータを変えて見てみることで観察せよ。")
 

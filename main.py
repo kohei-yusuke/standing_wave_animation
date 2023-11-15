@@ -4,7 +4,10 @@ import matplotlib.animation as animation
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+        page_title="定常波アニメーション",
+        layout="wide",
+    )
 
 fig, ax = plt.subplots()
 ax.set_ylim(-4,4)
